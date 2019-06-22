@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @Controller
 @SpringBootApplication
-public class DemoApplication {
+public class DocumentApplication {
 
     @RequestMapping("/")
     @ResponseBody
