@@ -1,6 +1,7 @@
 package data.document.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 
@@ -9,7 +10,7 @@ public class Document {
     @Id
     private String id;
     private String title;
-    private ArrayList<String> sections;
+    private List<Section> sections;
 
     public Document() {}
 
@@ -18,7 +19,7 @@ public class Document {
         this.sections = new ArrayList<>();
     }
     
-    public Document(String title, ArrayList<String> sections) {
+    public Document(String title, List<Section> sections) {
         this.title = title;
         this.sections = sections;
     }
@@ -27,7 +28,7 @@ public class Document {
         return title;
     }
 
-    public ArrayList<String> getSections(){
+    public List<Section> getSections(){
         return sections;
     }
 
@@ -38,7 +39,7 @@ public class Document {
     @Override
     public String toString() {
         String sectionString = "";
-        for (String s: getSections()) {
+        for (Section s: getSections()) {
             sectionString += s + ", ";
         }
         if (sectionString.length() != 0) {
@@ -48,6 +49,12 @@ public class Document {
         return String.format(
             "Document[title='%s', sections='%s']",
             title, sectionString);
+    }
+
+    public static abstract class Section {
+        @Id
+        private String id;
+        protected String type;
     }
 
 }
