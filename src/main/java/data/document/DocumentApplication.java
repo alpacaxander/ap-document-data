@@ -1,23 +1,20 @@
 package data.document;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.*;
+
+import data.document.data.DocumentDbClient;
 
 
-@Controller
 @SpringBootApplication
 public class DocumentApplication {
 
-    @RequestMapping("/")
-    @ResponseBody
-    String home() {
-      return "Hello World!";
-    }
+    @Autowired
+    DocumentDbClient documentDbClient;
 
-	public static void main(String[] args) {
-		SpringApplication.run(DocumentApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DocumentApplication.class, args);
+    }
 
 }
